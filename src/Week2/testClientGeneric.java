@@ -1,4 +1,3 @@
-package Week2;
 
 public class testClientGeneric {
 	
@@ -13,7 +12,7 @@ public class testClientGeneric {
 		int testsize = 11;
 		//Integer part
 		
-		GenericStack_array intarray = new GenericStack_array(testsize);		
+		GenericStack_array<Integer> intarray = new GenericStack_array<Integer>(testsize);		
 		
 		for(int i = 0; i < testsize; i++){
 			intarray.push(i);
@@ -31,7 +30,7 @@ public class testClientGeneric {
 		System.out.println("##-------------------------------------##");
 		//String part
 		
-		GenericStack_array stringarray = new GenericStack_array(testsize);		
+		GenericStack_array<String> stringarray = new GenericStack_array<String>(testsize);		
 		
 		for(int i = 0; i < testsize; i++){
 			stringarray.push("string"+i);
@@ -51,7 +50,7 @@ public class testClientGeneric {
 		//Integer part
 		
 		int[] intarray = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17};
-		GenericStack_linkedlist intnode = new GenericStack_linkedlist();
+		GenericStack_linkedlist<Integer> intnode = new GenericStack_linkedlist<Integer>();
 		
 		for(int i=0; i<intarray.length; i++){
 			System.out.println("Node item = "+intnode.N+" ;");
@@ -70,7 +69,7 @@ public class testClientGeneric {
 		//String part
 		
 		String[] stringarray = {"test0","test1"};
-		GenericStack_linkedlist stringnode = new GenericStack_linkedlist();
+		GenericStack_linkedlist<String> stringnode = new GenericStack_linkedlist<String>();
 		
 		for(int i=0; i<stringarray.length; i++){
 			System.out.println("Node item = "+stringnode.N+" ;");

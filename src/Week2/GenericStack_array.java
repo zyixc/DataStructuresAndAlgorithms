@@ -1,38 +1,47 @@
-package Week2;
 
-public class GenericStack_array {
-	private Object[] objectarray;
+public class GenericStack_array <T> {
+	private T[] tarray;
 	public int position = 0;
 	
 	public GenericStack_array(int size){
-		objectarray = new Object[size];
+		tarray = (T[]) new Object[size];
 	}
 	
-	public void push(Object item){
-		if(position == objectarray.length){
+	public void push(T item){
+		if(position == tarray.length){
 			System.out.println("array size increasing");
-			Object[] temparray = new Object[(objectarray.length*2)]; 
+			T[] temparray = (T[]) new Object[(tarray.length*2)]; 
 			for(int i=0; i<position; i++){
-				temparray[i] = objectarray[i];
+				temparray[i] = tarray[i];
 			}
-			objectarray = temparray;
+			tarray = temparray;
 		}
-		objectarray[position] = item;
+		tarray[position] = item;
 		position++;
 	}
 	
 	public Object pop(){
 		position--;
-		Object result = objectarray[position];
+		Object result = tarray[position];
 		
-		if(position < (objectarray.length/4)){
+		if(position < (tarray.length/4)){
 			System.out.println("array size decreasing");
-			Object[] temparray = new Object[(objectarray.length/2)]; 
+			T[] temparray = (T[]) new Object[(tarray.length/2)]; 
 			for(int i=0; i<position; i++){
-				temparray[i] = objectarray[i];
+				temparray[i] = tarray[i];
 			}
-			objectarray = temparray;
+			tarray = temparray;
 		}
 		return result;
+	}
+	
+	public boolean isEmpty(){
+		if(position == 0)
+			return true;
+		return false;
+	}
+	
+	public int size(){
+		return position;
 	}
 }

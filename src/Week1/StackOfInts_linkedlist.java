@@ -1,5 +1,3 @@
-package Week1;
-
 public class StackOfInts_linkedlist {
 	private Node first = null;
 	public int N = 0;
@@ -24,6 +22,16 @@ public class StackOfInts_linkedlist {
 		first = first.next;
 		N--;
 		return result;
+	}
+	
+	public boolean isEmpty(){
+		if(N==0)
+			return true;
+		return false;
+	}
+	
+	public int size(){
+		return N;
 	}
 	
 }

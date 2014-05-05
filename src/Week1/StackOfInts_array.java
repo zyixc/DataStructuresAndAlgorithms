@@ -1,4 +1,3 @@
-package Week1;
 
 public class StackOfInts_array {
 	private int[] intarray;
@@ -34,5 +33,15 @@ public class StackOfInts_array {
 			intarray = temparray;
 		}
 		return result;
+	}
+	
+	public boolean isEmpty(){
+		if(position == 0)
+			return true;
+		return false;
+	}
+	
+	public int size(){
+		return position;
 	}
 }

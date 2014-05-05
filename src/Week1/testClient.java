@@ -1,4 +1,3 @@
-package Week1;
 
 public class testClient {
 	private static final int testsize = 11;
