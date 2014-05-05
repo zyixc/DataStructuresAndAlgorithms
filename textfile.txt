@@ -1,0 +1,9 @@
+There's no guaranteed way, but here are a couple of possibilities:
+
+1) Look for a header on the file. Unfortunately, headers are file-specific, so while you might be able to find out that it's a RAR file, 
+you won't get the more generic answer of whether it's text or binary.
+
+2) Count the number of character vs. non-character types. Text files will be mostly alphabetical characters while binary files - 
+especially compressed ones like rar, zip, and such - will tend to have bytes more evenly represented.
+
+3) Look for a regularly repeating pattern of newline
