@@ -1,3 +1,4 @@
+package Week1;
 
 public class StackOfInts_array {
 	private int[] intarray;

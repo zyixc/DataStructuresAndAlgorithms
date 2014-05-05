@@ -1,3 +1,5 @@
+package Week1;
+
 public class StackOfInts_linkedlist {
 	private Node first = null;
 	public int N = 0;

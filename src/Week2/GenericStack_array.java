@@ -1,3 +1,4 @@
+package Week2;
 
 public class GenericStack_array <T> {
 	private T[] tarray;

@@ -1,3 +1,5 @@
+package Week2;
+
 public class GenericStack_linkedlist<T> {
 	private Node first = null;
 	public int N = 0;
