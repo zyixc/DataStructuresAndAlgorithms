@@ -1,9 +1,28 @@
-There's no guaranteed way, but here are a couple of possibilities:
+Analyzing algorithms that use the Java collections framework
 
-1) Look for a header on the file. Unfortunately, headers are file-specific, so while you might be able to find out that it's a RAR file, 
-you won't get the more generic answer of whether it's text or binary.
-
-2) Count the number of character vs. non-character types. Text files will be mostly alphabetical characters while binary files - 
-especially compressed ones like rar, zip, and such - will tend to have bytes more evenly represented.
-
-3) Look for a regularly repeating pattern of newline
+In this assignment various elements from the previous classes come together. You will practice:
+•	constructing algorithms;
+•	analyzing the theoretical complexity of algorithms;
+•	choosing appropriate data structures;
+•	embedding classes from the Java Collections Framework in your programs;
+•	validating the complexity of your algorithms in running time experiments.
+This assignment can be done individually or in teams of two. Next class some students will be asked to explain and demonstrate their algorithms and findings to the class.
+Assignment: generating snippets
+A snippet is a short piece of text taken from a larger text. Snippets are frequently used to show the context of words. For example, search engines use snippets to show the context of search terms in documents. The goal of this exercise is to create and analyze algorithms to find snippets of a specified length in a large piece of text.
+1.	Download a large text document from the web as test data.
+2.	A user specifies a single search term t and the snippet length n (n >= 0). Create an algorithm that
+o	reads a document d;
+o	for a given t and n finds all occurrences of t in d;
+o	for each occurrence outputs a  snippet of text consisting of n words before t, t, and n words after t (see example below)
+Assume that many searches are done on the same document.
+3.	Determine the average case time complexity of your algorithm. If this is too hard use the worst-case complexity as an upper-bound.
+4.	Implement your algorithm using one or more classes from the Java Collections Framework.
+5.	Test your program with a simple test client.
+6.	Use doubling ratio experiments to verify the time complexity of your implementation.
+7.	Create a second algorithm for the same problem using a different data structure.
+8.	Repeat steps 3-6 for the second algorithm and decide which algorithm is most useful in practice.
+Example:
+Document:	“… Algorithms and data structures is a fascinating and extremely useful topic. Any IT- related program should have at least one course on data structures and at least one on algorithms. Of course, the two may be combined into one course, … ”
+Query and length:	“course” 2
+Snippets:		“least one course on data”
+			“algorithms of course the two”
