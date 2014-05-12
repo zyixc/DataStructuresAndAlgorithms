@@ -8,7 +8,7 @@ import java.util.*;
  * Created by zyixc on 8-5-2014.
  */
 public class AnyalyzingAlgorithms {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException, InterruptedException{
         String searchterm = null;
         int snippetlength = 0;
 
@@ -21,37 +21,68 @@ public class AnyalyzingAlgorithms {
             return;
         }
 
+        System.err.println(">WARNING!!, results not 'trustworthy'");
+
         BufferedReader br = new BufferedReader(new FileReader("textfile.txt"));
-        algorithmArrayListVersion1(br,searchterm,snippetlength);
+        algorithmList(new ArrayList<String>(),br, searchterm, snippetlength);
+        br.close();
 
         BufferedReader br2 = new BufferedReader(new FileReader("textfile2.txt"));
-        algorithmArrayListVersion1(br2,searchterm,snippetlength);
+        algorithmList(new ArrayList<String>(),br2, searchterm, snippetlength);
+        br2.close();
+
+        BufferedReader br3 = new BufferedReader(new FileReader("textfile.txt"));
+        algorithmList(new LinkedList<String>(),br3, searchterm, snippetlength);
+        br3.close();
+
+        BufferedReader br4 = new BufferedReader(new FileReader("textfile2.txt"));
+        algorithmList(new LinkedList<String>(),br4, searchterm, snippetlength);
+        br4.close();
+
+        BufferedReader br5 = new BufferedReader(new FileReader("textfile.txt"));
+        algorithmList(new Vector<String>(),br5, searchterm, snippetlength);
+        br5.close();
+
+        BufferedReader br6 = new BufferedReader(new FileReader("textfile2.txt"));
+        algorithmList(new Vector<String>(),br6, searchterm, snippetlength);
+        br6.close();
     }
 
-    public static void algorithmArrayListVersion1(BufferedReader br, String searchterm, int snippetlength) throws IOException{
+    public static void algorithmList(List<String> wordlist,BufferedReader br, String searchterm, int snippetlength) throws IOException{
         /*
-         * O { Log(n) * Log(N) + N * Log(N) };
+         *
          */
         Stopwatch timer = new Stopwatch();
         String line = null;
-        List<String> wordlist = new ArrayList<String>();
-        while ((line = br.readLine()) != null) { //Log(N)
-            for(String word : line.split("[-!~\\s]+")) { //Log(N)
+        while ((line = br.readLine()) != null) {
+            for(String word : line.split("[-!~\\s]+")) {
                 wordlist.add(word);
             }
         }
-        System.out.println(">>>> algorithmArrayListVersion1 results:");
-        for(int i =0; i<wordlist.size(); i++){ //N
-            if(wordlist.get(i).equals(searchterm)){
+        double time = timer.elapsedTime();
+        System.out.print(">>>> " + wordlist.getClass().getName());
+        System.out.printf(" : [Words processed:  %d |Time elapsed:  %.3f ]\n",wordlist.size(),time);
+
+        /*
+         * N
+         */
+
+        int position = 0;
+        int results =0;
+        Stopwatch timer2 = new Stopwatch();
+        for(String word : wordlist) {
+            if (word.equals(searchterm)) {
                 StringBuilder temp = new StringBuilder();
-                for(int j = (i - snippetlength); j<(i+snippetlength+1) ; j++){ //Log(N)
-                    temp.append(wordlist.get(j));
+                for (int i = (position - snippetlength); i < (position + snippetlength + 1); i++) {
+                    temp.append(wordlist.get(i)); //[http://programcreek.com/2013/03/arraylist-vs-linkedlist-vs-vector/]
                     temp.append(" ");
                 }
-                //System.out.println("> "+temp);
+                //System.out.println(">> "+ temp);
+                results++;
             }
+            position++;
         }
-        double time = timer.elapsedTime();
-        System.out.println(">> algorithm finished, time elapsed: " + time);
+        double time2 = timer2.elapsedTime();
+        System.out.printf(">> algorithm finished: [Results found: %d |Time elapsed: %.3f]\n\n",results,time2);
     }
 }
