@@ -1,0 +1,23 @@
+Example results:
+
+>WARNING!!, results not 'trustworthy'
+>>>> java.util.ArrayList : [Words processed:  394 |Time elapsed:  0.005 ]
+>> algorithm finished: [Results found: 5 |Time elapsed: 0.001]
+
+>>>> java.util.ArrayList : [Words processed:  177511 |Time elapsed:  0.114 ]
+>> algorithm finished: [Results found: 2305 |Time elapsed: 0.057]
+
+>>>> java.util.LinkedList : [Words processed:  394 |Time elapsed:  0.000 ]
+>> algorithm finished: [Results found: 5 |Time elapsed: 0.001]
+
+>>>> java.util.LinkedList : [Words processed:  177511 |Time elapsed:  0.067 ]
+>> algorithm finished: [Results found: 2305 |Time elapsed: 2.194]
+
+>>>> java.util.Vector : [Words processed:  394 |Time elapsed:  0.001 ]
+>> algorithm finished: [Results found: 5 |Time elapsed: 0.000]
+
+>>>> java.util.Vector : [Words processed:  177511 |Time elapsed:  0.061 ]
+>> algorithm finished: [Results found: 2305 |Time elapsed: 0.019]
+
+
+Process finished with exit code 0

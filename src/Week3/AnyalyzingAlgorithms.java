@@ -8,9 +8,11 @@ import java.util.*;
  * Created by zyixc on 8-5-2014.
  */
 public class AnyalyzingAlgorithms {
+    private static String FILENAME = "textfile2.txt";
+    private static int RUN_TIMES = 80;
     public static void main(String[] args) throws IOException, InterruptedException{
         String searchterm = null;
-        int snippetlength = 0;
+        int snippetlength = 2;
 
         if(args.length > 1){
             searchterm = args[0];
@@ -22,46 +24,40 @@ public class AnyalyzingAlgorithms {
         }
 
         System.err.println(">WARNING!!, results not 'trustworthy'");
-
-        BufferedReader br = new BufferedReader(new FileReader("textfile.txt"));
-        algorithmList(new ArrayList<String>(),br, searchterm, snippetlength);
-        br.close();
-
-        BufferedReader br2 = new BufferedReader(new FileReader("textfile2.txt"));
-        algorithmList(new ArrayList<String>(),br2, searchterm, snippetlength);
-        br2.close();
-
-        BufferedReader br3 = new BufferedReader(new FileReader("textfile.txt"));
-        algorithmList(new LinkedList<String>(),br3, searchterm, snippetlength);
-        br3.close();
-
-        BufferedReader br4 = new BufferedReader(new FileReader("textfile2.txt"));
-        algorithmList(new LinkedList<String>(),br4, searchterm, snippetlength);
-        br4.close();
-
-        BufferedReader br5 = new BufferedReader(new FileReader("textfile.txt"));
-        algorithmList(new Vector<String>(),br5, searchterm, snippetlength);
-        br5.close();
-
-        BufferedReader br6 = new BufferedReader(new FileReader("textfile2.txt"));
-        algorithmList(new Vector<String>(),br6, searchterm, snippetlength);
-        br6.close();
+//        System.out.println(">>ArrayList");
+//        for(int i = 0; i < RUN_TIMES; i++) {
+//            double processtime = algorithmList(new ArrayList<String>(), 2^i, searchterm, snippetlength);
+//            System.out.println((2^i) + "\t" + processtime);
+//        }
+//        System.out.println(">>LinkedList");
+//        for(int i = 0; i < RUN_TIMES; i++) {
+//            double processtime = algorithmList(new LinkedList<String>(), 2^i, searchterm, snippetlength);
+//            System.out.println("plot(" + (2^i) + "," + processtime + ",'-or');");
+//        }
+        System.out.println(">>Vector");
+        for(int i = 0; i < RUN_TIMES; i++) {
+            double processtime = algorithmList(new Vector<String>(), 2^i, searchterm, snippetlength);
+            System.out.println((2^i) + "\t" + processtime);
+        }
     }
 
-    public static void algorithmList(List<String> wordlist,BufferedReader br, String searchterm, int snippetlength) throws IOException{
+    public static double algorithmList(List<String> wordlist, int times_file, String searchterm, int snippetlength) throws IOException{
         /*
          *
          */
         Stopwatch timer = new Stopwatch();
-        String line = null;
-        while ((line = br.readLine()) != null) {
-            for(String word : line.split("[-!~\\s]+")) {
-                wordlist.add(word);
+        for(int i = 0; i < times_file; i++){
+            BufferedReader br = new BufferedReader(new FileReader(FILENAME));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                for (String word : line.split("[-!~\\s]+")) {
+                    wordlist.add(word);
+                }
             }
         }
-        double time = timer.elapsedTime();
-        System.out.print(">>>> " + wordlist.getClass().getName());
-        System.out.printf(" : [Words processed:  %d |Time elapsed:  %.3f ]\n",wordlist.size(),time);
+        //double time = timer.elapsedTime();
+        //System.out.print(">>>> " + wordlist.getClass().getName());
+        //System.out.printf(" : [Words processed:  %d |Time elapsed:  %.3f ]\n",wordlist.size(),time);
 
         /*
          * N
@@ -69,7 +65,7 @@ public class AnyalyzingAlgorithms {
 
         int position = 0;
         int results =0;
-        Stopwatch timer2 = new Stopwatch();
+        //Stopwatch timer2 = new Stopwatch();
         for(String word : wordlist) {
             if (word.equals(searchterm)) {
                 StringBuilder temp = new StringBuilder();
@@ -82,7 +78,8 @@ public class AnyalyzingAlgorithms {
             }
             position++;
         }
-        double time2 = timer2.elapsedTime();
-        System.out.printf(">> algorithm finished: [Results found: %d |Time elapsed: %.3f]\n\n",results,time2);
+        //double time2 = timer2.elapsedTime();
+        return timer.elapsedTime();
+        //System.out.printf(">> algorithm finished: [Results found: %d |Time elapsed: %.3f]\n\n",results,time2);
     }
 }
