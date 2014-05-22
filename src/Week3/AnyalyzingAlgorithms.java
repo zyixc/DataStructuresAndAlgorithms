@@ -1,5 +1,7 @@
 package Week3;
 
+import edu.princeton.cs.algs4.Stopwatch;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

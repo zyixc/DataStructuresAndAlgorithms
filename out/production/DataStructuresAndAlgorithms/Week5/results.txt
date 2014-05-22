@@ -1,0 +1,19 @@
+1#scrabblewordchecklinearprobing
+size: 79339
+Result: 55701 redrawn
+Processing file: 0.081 sec| Get result: 0.000 sec
+Process finished with exit code 0
+
+1#scrabblewordcheckseperatechaining
+size: 79339
+Result: 55701 redrawn
+Processing file: 0.115 sec| Get result: 0.000 sec
+Process finished with exit code 0
+
+2#scrabblewordchecklinearprobing (Word near end of file)
+size: 186563
+Result: 5610093 a-wringing
+Processing file: 7.631 sec| Get result: 0.000 sec
+Process finished with exit code 0
+
+2#scrabblewordcheckseperatechaining (Word near end of file)
