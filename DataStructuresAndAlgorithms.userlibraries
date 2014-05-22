@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="algs4-package">
+    <archive path="C:/Users/zyixc/Documents/GitHub/DataStructuresAndAlgorithms/.idea/libraries/algs4-package.jar" />
+  </library>
+  <library name="stdlib-package">
+    <archive path="C:/Users/zyixc/Documents/GitHub/DataStructuresAndAlgorithms/.idea/libraries/stdlib-package.jar" />
+  </library>
+</eclipse-userlibraries>
+
